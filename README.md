@@ -8,7 +8,6 @@ Embora desenvolvido para uso pessoal, demonstra a capacidade de criar uma interf
 
 ## Características
 
-- Autenticação de usuário para experiências personalizadas
 - Criação e gerenciamento de rotinas de treino
 - Adição, edição e remoção de exercícios em cada treino
 - Interface responsiva para uso em dispositivos móveis e desktop
