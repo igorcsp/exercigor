@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Exercígor é um projeto pessoal de aplicação web desenvolvido como uma ferramenta de aprendizado e experimentação com novas tecnologias. Concebido como um gerenciador de treinos e exercícios, este projeto serviu para desenvolvedor e aprimorar habilidades em React, Firebase e outras tecnologias modernas de desenvolvimento web.
+Exercígor é um projeto pessoal de aplicação web desenvolvido como uma ferramenta de aprendizado e experimentação com novas tecnologias. Concebido como um gerenciador de treinos e exercícios, este projeto foi desenvolvido para aplicar habilidades em React, Firebase e outras tecnologias modernas de desenvolvimento web.
 
 Embora desenvolvido para uso pessoal, demonstra a capacidade de criar uma interface intuitiva e funcional que permite aos usuários gerenciar seus planos de treino de forma eficiente.
 
