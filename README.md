@@ -60,13 +60,23 @@ npm run dev
 
 ## Uso
 
-Após a instalação e configuração, você pode:
+Após a instalação e configuração, você pode utilizar o cadastro de testes para:
 
-1. Conta para testes > teste@teste.com > senhaTeste
-2. Adicionar novos treinos
-3. Adicionar exercícios aos treinos
-4. Editar ou excluir treinos e exercícios existentes
-5. Navegar entre diferentes treinos usando a paginação
+1. Adicionar novos treinos
+2. Adicionar exercícios aos treinos
+3. Editar ou excluir treinos e exercícios existentes
+4. Navegar entre diferentes treinos usando a paginação
+
+usuário:
+```
+teste@teste.com
+```
+
+senha:
+```
+senhaTeste
+```
+
 
 ## Contribuição
 
