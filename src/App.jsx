@@ -175,10 +175,9 @@ function App() {
       <header className="container-fluid py-3">
         <div className="row align-items-center">
           <div className="col-12 col-md-4 order-md-1 d-md-flex justify-content-md-start">
-            {/* Placeholder vazio para telas médias e maiores */}
           </div>
           <div className="col-6 col-md-4 order-md-2 text-start text-md-center">
-            <h1 className="mb-0">exercígor</h1>
+            <h1 className="mb-0">FitTrack</h1>
           </div>
           <div className="col-6 col-md-4 order-md-3 d-flex justify-content-end">
             <button className="btn btn-outline-danger" onClick={handleLogout}>

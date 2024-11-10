@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import Modal from "./Modal";
 
 function Login({ onLogin, handleDataRefresh }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = () => {
+    setShowModal((prev) => !prev);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      handleDataRefresh()
+      handleDataRefresh();
       onLogin();
     } catch (error) {
       setError(error.message);
@@ -20,7 +26,7 @@ function Login({ onLogin, handleDataRefresh }) {
 
   return (
     <div className="login-container">
-      <h2 className="login-title">Login</h2>
+      <h2 className="login-title">Login - FitTrack</h2>
       <form onSubmit={handleSubmit}>
         <label>E-mail</label>
         <br />
@@ -42,6 +48,19 @@ function Login({ onLogin, handleDataRefresh }) {
           required
         />
         <br />
+        <Modal show={showModal} handleModal={handleModal}>
+          <p>
+            Por enquanto novos usuários só podem ser registrados direto no banco
+            de dados.
+          </p>
+        </Modal>
+        <button
+          className="login-btn form-submit"
+          onClick={handleModal}
+          style={{ background: "none", border: "1px solid black" }}
+        >
+          Cadastrar
+        </button>
         <button className="login-btn form-submit" type="submit">
           Entrar
         </button>
