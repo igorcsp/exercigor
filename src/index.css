@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
+:root {
+    --baby-blue: #248aff;
+}
+
 body {
     background-color: #1d1680 !important;
 }
@@ -89,7 +93,7 @@ h1 {
     width: min(100% - 3px, 840px);
     margin-inline: auto;
     height: min(25%, 30px);
-    background: #3CFFDC;
+    background: var(--baby-blue);
     border-radius: 5px;
     margin-top: 15px;
     border: none;
@@ -151,7 +155,7 @@ h1 {
 }
 
 .active {
-    background-color: #3CFFDC;
+    background-color: var(--baby-blue);
     border-radius: 50%;
 }
 
