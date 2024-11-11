@@ -11,10 +11,10 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "./firebaseConfig.js";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import WorkoutForm from "./components/WorkoutForm.jsx";
-import Workout from "./components/Workout.jsx";
+import WorkoutForm from "./pages/WorkoutPage/WorkoutForm.jsx";
+import Workout from "./pages/WorkoutPage/Workout.jsx";
 import CircularIndeterminate from "./components/CircularIndeterminate.jsx";
-import Login from "./components/Login.jsx";
+import Login from "./pages/Login/Login.jsx";
 import "./index.css";
 
 function App() {
@@ -174,8 +174,7 @@ function App() {
     <div className="app">
       <header className="container-fluid py-3">
         <div className="row align-items-center">
-          <div className="col-12 col-md-4 order-md-1 d-md-flex justify-content-md-start">
-          </div>
+          <div className="col-12 col-md-4 order-md-1 d-md-flex justify-content-md-start"></div>
           <div className="col-6 col-md-4 order-md-2 text-start text-md-center">
             <h1 className="mb-0">FitTrack</h1>
           </div>
