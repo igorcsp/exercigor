@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import Modal from "../../components/Modal";
+import RegisterForm from "./RefisterForm";
 
 function Login({ onLogin, handleDataRefresh }) {
   const [email, setEmail] = useState("");
@@ -48,12 +49,6 @@ function Login({ onLogin, handleDataRefresh }) {
           required
         />
         <br />
-        <Modal show={showModal} handleModal={handleModal}>
-          <p>
-            Por enquanto novos usuários só podem ser registrados direto no banco
-            de dados.
-          </p>
-        </Modal>
         <button
           className="login-btn form-submit"
           onClick={handleModal}
@@ -66,10 +61,11 @@ function Login({ onLogin, handleDataRefresh }) {
         </button>
       </form>
       {error && <p className="error">{error}</p>}
+      <Modal show={showModal} handleModal={handleModal}>
+        <RegisterForm />
+      </Modal>
     </div>
   );
 }
 
 export default Login;
-
-
