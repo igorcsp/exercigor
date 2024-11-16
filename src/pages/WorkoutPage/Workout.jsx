@@ -35,7 +35,7 @@ const Workout = ({
 
   const deleteWorkout = async (workoutId) => {
     if (!workoutId) {
-      console.error("ID do workout não fornecido");
+      console.error("ID do workout não foi fornecido");
       return;
     }
     try {

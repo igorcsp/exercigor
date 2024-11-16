@@ -1,14 +1,17 @@
 module.exports = {
     testEnvironment: 'jsdom',
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+    setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
     moduleNameMapper: {
-        // Mapeia importações de arquivos estáticos
-        '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-        '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/firebase/auth.js',
-        // Se você estiver usando aliases no Vite, mapeie-os aqui também
-        '^@/(.*)$': '<rootDir>/src/$1'
+        '^@/(.*)$': '<rootDir>/src/$1',
+        '\\.svg$': '<rootDir>/src/__mocks__/fileMock.js',
+        '\\.css$': 'identity-obj-proxy',
+        '^firebase/auth$': '<rootDir>/src/__mocks__/firebase/auth.js'
     },
     transform: {
-        '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest'
-    }
+        '^.+\\.(js|jsx)$': 'babel-jest'
+    },
+    testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+    transformIgnorePatterns: [
+        'node_modules/(?!(firebase|@firebase)/)'
+    ]
 };

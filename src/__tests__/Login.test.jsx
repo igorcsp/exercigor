@@ -1,10 +1,16 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event"; // Recomendo usar userEvent para interações mais realistas
-import Login from "../Login";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Login from "../pages/Login/Login";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-// Mock do Firebase
-jest.mock("firebase/auth");
+jest.mock("firebase/auth", () => ({
+  signInWithEmailAndPassword: jest.fn(),
+  getAuth: jest.fn(),
+}));
+
+jest.mock("../firebaseConfig.js", () => ({
+  auth: {},
+}));
 
 describe("Login Component", () => {
   // Limpa os mocks antes de cada teste
@@ -83,19 +89,29 @@ describe("Login Component", () => {
     // Tenta fazer login com campos vazios
     await userEvent.click(screen.getByRole("button", { name: /entrar/i }));
 
-    // Verifica se as mensagens de validação aparecem
+    // Verifica a mensagem de erro específica para o campo "E-mail"
     await waitFor(() => {
-      expect(screen.getByText(/campo obrigatório/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/e-mail/i).parentNode).toHaveTextContent(
+        /campo obrigatório/i
+      );
+    });
+
+    // Verifica a mensagem de erro específica para o campo "Senha"
+    await waitFor(() => {
+      expect(screen.getByLabelText(/senha/i).parentNode).toHaveTextContent(
+        /campo obrigatório/i
+      );
     });
   });
 
   it("opens the register modal when 'Cadastrar' is clicked", async () => {
     render(<Login onLogin={jest.fn()} handleDataRefresh={jest.fn()} />);
 
+    // Clica no botão "Cadastrar"
     await userEvent.click(screen.getByRole("button", { name: /cadastrar/i }));
 
-    // Verifica se o modal de registro está visível
-    expect(screen.getByText(/registerform/i)).toBeInTheDocument();
+    // Verifica se o modal com o título "Cadastro" aparece
+    expect(screen.getByText(/cadastro/i)).toBeInTheDocument();
   });
 
   it("closes the register modal when close button is clicked", async () => {
@@ -104,11 +120,15 @@ describe("Login Component", () => {
     // Abre o modal
     await userEvent.click(screen.getByRole("button", { name: /cadastrar/i }));
 
-    // Fecha o modal (ajuste o seletor conforme seu componente)
+    // Verifica que o modal está visível
+    expect(screen.getByText(/cadastro/i)).toBeInTheDocument();
+
+    // Fecha o modal
     const closeButton = screen.getByRole("button", { name: /fechar/i });
     await userEvent.click(closeButton);
 
-    // Verifica se o modal foi fechado
-    expect(screen.queryByText(/registerform/i)).not.toBeInTheDocument();
+    // Verifica que o modal foi fechado
+    expect(screen.queryByText(/cadastro/i)).not.toBeInTheDocument();
   });
+
 });
