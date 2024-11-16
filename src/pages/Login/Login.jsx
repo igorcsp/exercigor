@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import Modal from "../../components/Modal";
-import RegisterForm from "./RefisterForm";
+import RegisterForm from "./RegisterForm";
 
 function Login({ onLogin, handleDataRefresh }) {
   const [email, setEmail] = useState("");
@@ -49,15 +49,15 @@ function Login({ onLogin, handleDataRefresh }) {
           required
         />
         <br />
+        <button className="login-btn form-submit" type="submit">
+          Entrar
+        </button>
         <button
           className="login-btn form-submit"
           onClick={handleModal}
           style={{ background: "none", border: "1px solid black" }}
         >
           Cadastrar
-        </button>
-        <button className="login-btn form-submit" type="submit">
-          Entrar
         </button>
       </form>
       {error && <p className="error">{error}</p>}
