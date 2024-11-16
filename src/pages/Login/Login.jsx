@@ -1,22 +1,28 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebaseConfig";
+import { auth } from "../../firebaseConfig.js";
 import Modal from "../../components/Modal";
-import RegisterForm from "./RefisterForm";
+import RegisterForm from "./RegisterForm";
 
 function Login({ onLogin, handleDataRefresh }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [registerFormModal, setRegisterFormModal] = useState(false);
 
-  const handleModal = () => {
-    setShowModal((prev) => !prev);
+  // react-hook-form setup
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleRegisterFormModal = () => {
+    setRegisterFormModal((prev) => !prev);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
+      const { email, password } = data; // Desestrutura os dados do formulário
       await signInWithEmailAndPassword(auth, email, password);
       handleDataRefresh();
       onLogin();
@@ -28,40 +34,50 @@ function Login({ onLogin, handleDataRefresh }) {
   return (
     <div className="login-container">
       <h2 className="login-title">Login - FitTrack</h2>
-      <form onSubmit={handleSubmit}>
-        <label>E-mail</label>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="email">E-mail</label>
         <br />
         <input
           className="form-input"
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+          id="email"
+          {...register("email", { required: "Campo obrigatório" })}
         />
+        {errors.email && <span className="error">{errors.email.message}</span>}
         <br />
-        <label>Senha</label>
+        <label htmlFor="password">Senha</label>
         <br />
         <input
           className="form-input"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+          id="password"
+          {...register("password", { required: "Campo obrigatório" })}
         />
+        {errors.password && (
+          <span className="error">{errors.password.message}</span>
+        )}
         <br />
+
+        {error && (
+          <p className="error">
+            Error: <em>{error}</em>
+          </p>
+        )}
+
+        <button className="login-btn form-submit" type="submit">
+          Entrar
+        </button>
         <button
           className="login-btn form-submit"
-          onClick={handleModal}
+          type="button"
+          onClick={handleRegisterFormModal}
           style={{ background: "none", border: "1px solid black" }}
         >
           Cadastrar
         </button>
-        <button className="login-btn form-submit" type="submit">
-          Entrar
-        </button>
       </form>
-      {error && <p className="error">{error}</p>}
-      <Modal show={showModal} handleModal={handleModal}>
+      <Modal show={registerFormModal} handleModal={handleRegisterFormModal}>
+        <h2 className="workout-header">Cadastro</h2>
         <RegisterForm />
       </Modal>
     </div>
