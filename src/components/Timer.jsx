@@ -5,7 +5,6 @@ import pauseIcon from "/pauseBtn.svg";
 
 const Timer = ({ expiryTimestamp, autoStart, shouldStart, onExpire }) => {
   const sound = new Audio("/play.wav");
-  //
 
   const { seconds, minutes, isRunning, start, pause, restart } = useTimer({
     expiryTimestamp,
@@ -40,11 +39,21 @@ const Timer = ({ expiryTimestamp, autoStart, shouldStart, onExpire }) => {
       </div>
 
       {isRunning ? (
-        <button className="startPause" onClick={handlePause}>
+        <button
+          type="button"
+          className="startPause"
+          onClick={handlePause}
+          aria-label="Pause timer"
+        >
           <img src={pauseIcon} alt="" />
         </button>
       ) : (
-        <button className="startPause" onClick={handleStart}>
+        <button
+          type="button"
+          className="startPause"
+          onClick={handleStart}
+          aria-label="Start timer"
+        >
           <img src={playIcon} alt="" />
         </button>
       )}

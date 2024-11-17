@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
+:root {
+    --baby-blue: #248aff;
+}
+
 body {
-    background-color: #7F00CD !important;
+    background-color: #1d1680 !important;
 }
 
 .app {
@@ -89,7 +93,7 @@ h1 {
     width: min(100% - 3px, 840px);
     margin-inline: auto;
     height: min(25%, 30px);
-    background: #3CFFDC;
+    background: var(--baby-blue);
     border-radius: 5px;
     margin-top: 15px;
     border: none;
@@ -151,7 +155,7 @@ h1 {
 }
 
 .active {
-    background-color: #3CFFDC;
+    background-color: var(--baby-blue);
     border-radius: 50%;
 }
 
@@ -190,11 +194,9 @@ h1 {
     gap: 5px;
 }
 
-.workout-new-exercise >span {
+.workout-new-exercise>span {
     text-align: end;
 }
-
-
 
 .workout-exercises {
     display: flex;
@@ -313,5 +315,9 @@ label {
     font-size: 1.6rem;
 }
 
-
-
+.error {
+    font-family: 'Itim', sans-serif;
+    color: rgb(163, 11, 11);
+    margin-bottom: 0px;
+    margin-top: 9px;
+}
