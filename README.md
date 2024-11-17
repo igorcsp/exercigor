@@ -1,8 +1,8 @@
-# Exercígor - Gerenciador de Treinos Pessoal
+# FitTrack - Gerenciador de Treinos Pessoal
 
 ## Visão Geral
 
-Exercígor é um projeto pessoal de aplicação web desenvolvido como uma ferramenta de aprendizado e experimentação com novas tecnologias. Concebido como um gerenciador de treinos e exercícios, este projeto foi desenvolvido para aplicar habilidades em React, Firebase e outras tecnologias modernas de desenvolvimento web.
+FitTrack é um projeto pessoal de aplicação web desenvolvido como uma ferramenta de aprendizado e experimentação com novas tecnologias. Concebido como um gerenciador de treinos e exercícios, este projeto foi desenvolvido para aplicar habilidades em React, Firebase e outras tecnologias modernas de desenvolvimento web.
 
 Embora desenvolvido para uso pessoal, tem a capacidade de criar uma interface intuitiva e funcional que permite aos usuários gerenciar seus planos de treino de forma eficiente.
 
@@ -34,7 +34,7 @@ git clone https://github.com/seu-usuario/exercigor.git
 
 ```
 cd exercigor
-npm install
+npm i
 ```
 
 3. Configure o Firebase
