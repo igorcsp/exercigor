@@ -41,7 +41,7 @@ const Workout = ({
     try {
       const userWorkoutsRef = doc(db, "users", user.uid, "workouts", workoutId);
       await deleteDoc(userWorkoutsRef);
-      console.log("Workout excluído com sucesso!");
+      // console.log("Workout excluído com sucesso!");
       onWorkoutDelete(workoutId);
     } catch (error) {
       console.error("Erro ao excluir workout:", error);

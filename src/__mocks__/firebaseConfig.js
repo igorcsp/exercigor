@@ -12,3 +12,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = {
+    collection: jest.fn(),
+    doc: jest.fn(),
+};
