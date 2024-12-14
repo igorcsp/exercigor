@@ -1,10 +1,10 @@
 import delBtn from "/deleteIcon.svg";
 
 const Modal = ({ show, handleModal, children }) => {
-  if (!show) return null; // Não renderiza nada se o modal não estiver visível
+  if (!show) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className="modal">
       <section className="modal-main">
         <button className="delete-icon" onClick={handleModal}>
           <img src={delBtn} alt="fechar" />

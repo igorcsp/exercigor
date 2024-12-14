@@ -49,29 +49,37 @@ h1 {
 /* os bagui do Modal */
 
 .modal {
-    background: rgba(0, 0, 0, 0.6) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    padding: 75px 10% 0 10% !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 0 10%;
+    overflow: auto;
 }
 
 .modal-main {
-    background: white !important;
-    padding: 20px !important;
-    width: min(100% - 15px, 840px) !important;
-    margin-inline: auto !important;
-    border-radius: 5px !important;
+    background: white;
+    padding: 20px;
+    width: min(100% - 15px, 840px);
+    margin-inline: auto;
+    border-radius: 5px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
 }
 
 .display-block {
-    display: block !important;
+    display: block;
 }
 
 .display-none {
-    display: none !important;
+    display: none;
 }
 
 /* os bagui do Form */
